@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "AO3 Exact Title Search",
+  "version": "3.0.0",
+  "description": "Make AO3's native search use contiguous exact title wording without changing the interface.",
+  "content_scripts": [
+    {
+      "matches": ["https://archiveofourown.org/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_start"
+    }
+  ]
+}
