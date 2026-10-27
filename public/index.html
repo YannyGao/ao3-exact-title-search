@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="严格连续匹配 AO3 作品标题的本地搜索工具">
+  <title>AO3 Exact — 标题精确搜索</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="masthead">
+    <a class="brand" href="/" aria-label="AO3 Exact 首页">
+      <span class="brand-mark">A3</span>
+      <span>AO3 Exact</span>
+    </a>
+    <span class="local-badge">LOCAL MIRROR</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">EXACT TITLE SEARCH</p>
+      <h1>顺序不变，<br>一个字都不能差。</h1>
+      <p class="intro">输入完整文字，只显示标题中连续出现相同文字的 AO3 作品。</p>
+
+      <form id="search-form" class="search" role="search">
+        <label for="query">作品标题包含</label>
+        <div class="search-row">
+          <input id="query" name="q" type="search" autocomplete="off" placeholder="例如：羡爆" maxlength="200" required autofocus>
+          <button type="submit">精确搜索</button>
+        </div>
+        <p class="rule"><strong>羡爆</strong> ✓　爆羡 ×　羡/爆 ×　羡 爆 ×</p>
+      </form>
+    </section>
+
+    <section id="results-section" class="results" hidden>
+      <div class="results-head">
+        <div>
+          <p class="eyebrow">MATCHING WORKS</p>
+          <h2 id="results-title">搜索结果</h2>
+        </div>
+        <p id="result-count" class="count"></p>
+      </div>
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+      <ol id="results-list" class="work-list"></ol>
+      <nav id="pagination" class="pagination" aria-label="搜索结果分页" hidden>
+        <button id="prev-page" type="button">← 上一页</button>
+        <span id="page-label"></span>
+        <button id="next-page" type="button">下一页 →</button>
+      </nav>
+    </section>
+  </main>
+
+  <footer>
+    <p>本地个人工具。数据来自 <a href="https://archiveofourown.org" rel="noreferrer">Archive of Our Own</a>；本站与 OTW/AO3 无隶属关系。</p>
+  </footer>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="将完整搜索词作为连续文字发送到 AO3 作品标题搜索">
+  <title>AO3 Exact — 标题精确搜索</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header>
+    <a href="./"><span class="mark">A3</span> AO3 Exact</a>
+    <span class="badge">PUBLIC SEARCH</span>
+  </header>
+  <main>
+    <p class="eyebrow">EXACT TITLE SEARCH</p>
+    <h1>顺序不变，<br>一个字都不能差。</h1>
+    <p class="intro">输入完整文字，它会作为连续、顺序固定的标题文字在 AO3 中搜索。</p>
+    <form id="search-form">
+      <label for="query">作品标题包含</label>
+      <div class="row">
+        <input id="query" type="search" placeholder="例如：羡爆" maxlength="200" required autofocus>
+        <button type="submit">前往 AO3 搜索</button>
+      </div>
+      <p><strong>羡爆</strong> ✓　爆羡 ×　羡/爆 ×　羡 爆 ×</p>
+    </form>
+    <aside>
+      <strong>工作方式</strong>
+      <span>公开页面不会收集或保存搜索内容。提交后，你会前往 AO3 的作品标题搜索结果页。</span>
+    </aside>
+  </main>
+  <footer>非官方个人工具，与 OTW/AO3 无隶属关系。</footer>
+  <script src="./app.js"></script>
+</body>
+</html>
