@@ -8,6 +8,22 @@
   ];
   const RESULT_SELECTOR = 'ol.work.index.group > li.work.blurb, li.work.blurb';
   const TITLE_SELECTOR = 'h4.heading a[href*="/works/"]';
+  let enabled = true;
+
+  chrome.storage.local.get({ enabled: true }, (settings) => {
+    enabled = settings.enabled;
+  });
+  chrome.storage.onChanged.addListener((changes, area) => {
+    if (area !== 'local' || !changes.enabled) return;
+    enabled = changes.enabled.newValue;
+    if (enabled) {
+      filterRenderedResults();
+    } else {
+      for (const result of document.querySelectorAll(RESULT_SELECTOR)) {
+        result.classList.remove('ao3-exact-title-hidden');
+      }
+    }
+  });
 
   const findQueryInput = (form) => {
     for (const selector of QUERY_SELECTORS) {
@@ -31,6 +47,7 @@
   };
 
   document.addEventListener('submit', (event) => {
+    if (!enabled) return;
     const form = event.target instanceof HTMLFormElement ? event.target : null;
     const input = form ? findQueryInput(form) : null;
     if (!isNativeHeaderSearch(form, input)) return;
@@ -50,6 +67,7 @@
   };
 
   const filterRenderedResults = () => {
+    if (!enabled) return;
     const query = exactQueryFromLocation().trim();
     if (!query) return;
     const needle = normalize(query);
